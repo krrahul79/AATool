@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+<form method="POST" class="form-update-question" action="{{url_for('editType1')}}" style="color:black">
+    {{ form.csrf_token }}
+    <div class="text-left">
+        {{form.question_id(type="hidden", value = question.id)}}
+        {{form.question.label()}}
+        {{form.question(id="question",class="form-control",value=question.question_text)}}
+        <br>
+        {{form.option1.label()}}
+        {{form.option1(id="option1",class="form-control",placeholder="option1",value=question.option_one)}}
+        <br>
+        {{form.option2.label()}}
+        {{form.option2(id="option2",class="form-control",placeholder="option2",value=question.option_two)}}
+        <br>
+        {{form.option3.label()}}
+        {{form.option3(id="option3",class="form-control",placeholder="option3",value=question.option_three)}}
+        <br>
+        {{form.option4.label()}}
+        {{form.option4(id="option4",class="form-control",placeholder="option4",value=question.option_four)}}
+        <br>
+        {{form.answer.label()}}
+        {{form.answer(id="answer",class="form-control",placeholder="answer")}}
+        <br>
+    </div>
+    <br>
+    <div>{{ form.submit(value ="Edit question", class="btn btn-lg btn-block edit-button btn-primary") }}</div>
+</form>
+{% endblock content %}

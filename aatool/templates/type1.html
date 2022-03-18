@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class=".questions">
+    <h3>Created questions</h3>
+    {% for i in questions %}
+    {{ i.question_text }}
+    <button idvalue={{i.id}} class="edit-questions">Edit question</button>
+    <br>
+    {% endfor %}
+</div>
+<form method="POST" class="form-create-test" style="color:black">
+    {{ form.csrf_token }}
+    {{form.question.label()}}
+    {{form.question(id="question",class="form-control",placeholder="Question")}}
+    <br>
+    {{form.option1.label()}}
+    {{form.option1(id="option1",class="form-control",placeholder="option1")}}
+    <br>
+    {{form.option2.label()}}
+    {{form.option2(id="option2",class="form-control",placeholder="option2")}}
+    <br>
+    {{form.option3.label()}}
+    {{form.option3(id="option3",class="form-control",placeholder="option3")}}
+    <br>
+    {{form.option4.label()}}
+    {{form.option4(id="option4",class="form-control",placeholder="option4")}}
+    <br>
+    {{form.answer.label()}}
+    {{form.answer(id="answer",class="form-control",placeholder="answer")}}
+    <br>
+    <br>
+    <div>{{ form.submit(class="btn btn-lg btn-block add-button btn-primary") }}</div>
+</form>
+<script>
+    const questionsbutton = document.querySelectorAll(".edit-questions")
+    const updatequestion = document.querySelector(".form-update-question")
+    const editsubmitbutton = document.querySelector(".edit-button")
+    questionsbutton.forEach(question => {
+        question.addEventListener("click", async (event) => {
+            const questionId = question.getAttribute("idvalue")
+            console.log(questionId)
+            window.location.href = "http://localhost:5000/getType1/"+ questionId.toString();
+        })
+    })
+</script>
+
+{% endblock content %}

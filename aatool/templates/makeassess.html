@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<body>
+
+  <h2> Create a new Test </h2>
+    <form method="post">
+      <p> Enter a title for your test: {{ form.name (placeholder="title") }} </p>
+       {{ form.hidden_tag() }}
+       {{ form.chooseQuestions }}
+       {{ form.submit }}
+    </form>
+
+
+{% endblock content %}

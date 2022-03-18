@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<form method="POST">
+    <div class="form-group">
+        {{ form.csrf_token }}
+        {{ form.title.label }} {{ form.title(class_="form-control", placeholder="Short title of question") }}
+        {{ form.text.label }} {{ form.text(class_="form-control", rows="4", placeholder="Write the main body of your question here") }}
+        {{ form.answer.label }} {{ form.answer }}
+        {{ form.difficulty.label }} {{ form.difficulty }}
+        <hr>
+        {{ form.feedback.label }} {{ form.feedback(class_="form-control", rows="2", placeholder="Write some feedback for incorrect answers (Optional)") }}
+        {{ form.feedfwd.label }} {{ form.feedfwd(class_="form-control", rows="2", placeholder="Write some feedforward for correct answers (Optional)") }}
+
+    </div>
+    <br>
+    <div align="center">
+        <button class="btn btn-primary btn-lg" type="submit">Create question</button>
+    </div>
+    <br>
+    <div align="center">
+        <a href="/home"><button class="btn btn-secondary btn-lg" type="button">Cancel</button></a>
+    </div>
+    <hr>
+</form>
+
+{% endblock content %}

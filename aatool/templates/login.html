@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{% for error in form.username.errors %}
+    <span class="span-error">[{{ error }}]</span>
+{% endfor %}
+{% for error in form.password.errors %}
+    <span class="span-error">[{{ error }}]</span>
+{% endfor %}
+
+<form method="POST">
+    <br>
+    <h3 align="center">
+        Login
+    </h3>
+    <div class="form-group">
+        {{ form.csrf_token }}
+        {{ form.username.label }} {{ form.username(class_="form-control", placeholder="Enter username/email address (Usernames are case sensitive)") }}
+        {{ form.password.label }} {{ form.password(class_="form-control", placeholder="Enter password (Case sensitive)") }}
+    </div>
+    <br/>
+    <div align="center">
+        <button class="btn btn-primary" type="submit">Login</button>
+    </div>
+</form>
+
+<div class="text-center">
+    <small class="text-muted">Don't have an account? <a href="{{ url_for('register') }}"">Click here to register!</a></small>
+</div>
+
+
+{% endblock content %}
